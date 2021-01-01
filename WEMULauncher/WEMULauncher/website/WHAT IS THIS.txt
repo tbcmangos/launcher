@@ -1,0 +1,2 @@
+This folder contains the Apache server with the registration page.
+If you want to change the page, it's in the htdocs folder.
