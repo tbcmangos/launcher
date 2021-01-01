@@ -1,0 +1,16 @@
+
+.vs/
+#Ignore thumbnails created by Windows
+Thumbs.db
+#Ignore files built by Visual Studio
+*.user
+WEMULauncher/WEMULauncher/[Bb]in
+WEMULauncher/WEMULauncherWPF/[Bb]in
+WindowsAutoKill1/WindowsAutoKill1/[Bb]in
+*.lib
+*.sbr
+obj/
+
+
+#Nuget packages folder
+packages/
