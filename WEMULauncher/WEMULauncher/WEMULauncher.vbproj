@@ -1,0 +1,2026 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C7A547C-3E6F-4548-BC82-C63E0E9F1C0F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Sub Main</StartupObject>
+    <RootNamespace>WEMULauncher</RootNamespace>
+    <AssemblyName>WEMULauncher</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>WEMULauncher.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>WEMULauncher.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.8.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.8.8\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alert\Form_Alert.Designer.vb">
+      <DependentUpon>Form_Alert.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Alert\Form_Alert.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alert\FormAlertTest.Designer.vb">
+      <DependentUpon>FormAlertTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Alert\FormAlertTest.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigHelper\ConfigHelper.vb" />
+    <Compile Include="ConfigHelper\ConfigLine.vb" />
+    <Compile Include="ConfigHelper\ConfigMapping.vb" />
+    <Compile Include="ConfigHelper\FormConfigExample.Designer.vb">
+      <DependentUpon>FormConfigExample.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigHelper\FormConfigExample.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlsCombo\myControlContacts.Designer.vb">
+      <DependentUpon>myControlContacts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsCombo\myControlContacts.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlsCombo\myControlNewsFeeds.Designer.vb">
+      <DependentUpon>myControlNewsFeeds.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsCombo\myControlNewsFeeds.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlsCombo\myFileSelection.Designer.vb">
+      <DependentUpon>myFileSelection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsCombo\myFileSelection.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlsCombo\myFolderSelection.Designer.vb">
+      <DependentUpon>myFolderSelection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsCombo\myFolderSelection.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlsCombo\myHBLogo.Designer.vb">
+      <DependentUpon>myHBLogo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsCombo\myHBLogo.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlsCombo\myTextBox.Designer.vb">
+      <DependentUpon>myTextBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsCombo\myTextBox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\myButtonFontChange.Designer.vb">
+      <DependentUpon>myButtonFontChange.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myButtonFontChange.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myButtonTrans.Designer.vb">
+      <DependentUpon>myButtonTrans.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myButtonTrans.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myButtonHover.Designer.vb">
+      <DependentUpon>myButtonHover.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myButtonHover.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myButton.Designer.vb">
+      <DependentUpon>myButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myButtonCircluar.Designer.vb">
+      <DependentUpon>myButtonCircluar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myButtonCircluar.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myButtonEllipse.Designer.vb">
+      <DependentUpon>myButtonEllipse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myButtonEllipse.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myButtonEllipseWithBorder.Designer.vb">
+      <DependentUpon>myButtonEllipseWithBorder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myButtonEllipseWithBorder.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myButtonToggle.Designer.vb">
+      <DependentUpon>myButtonToggle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myButtonToggle.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myControlEllipse.Designer.vb">
+      <DependentUpon>myControlEllipse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myControlEllipse.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myDrag.Designer.vb">
+      <DependentUpon>myDrag.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myDrag.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myFormEllipse.Designer.vb">
+      <DependentUpon>myFormEllipse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myFormEllipse.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myGradianpanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myImageBtn.Designer.vb">
+      <DependentUpon>myImageBtn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myImageBtn.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myRadio.Designer.vb">
+      <DependentUpon>myRadio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myRadio.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myTabControl.Designer.vb">
+      <DependentUpon>myTabControl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myTabControl.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myTextBoxBorder.Designer.vb">
+      <DependentUpon>myTextBoxBorder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myTextBoxBorder.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\myTextBoxRegex.Designer.vb">
+      <DependentUpon>myTextBoxRegex.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\myTextBoxRegex.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TextBoxTransparent\AlphaBlendTextBox.Designer.vb">
+      <DependentUpon>AlphaBlendTextBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextBoxTransparent\AlphaBlendTextBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TextBoxTransparent\win32.vb" />
+    <Compile Include="Control\CtrlBanner.Designer.vb">
+      <DependentUpon>CtrlBanner.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlBanner.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\CtrlFriendPage.Designer.vb">
+      <DependentUpon>CtrlFriendPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlFriendPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\CtrlMainPage.Designer.vb">
+      <DependentUpon>CtrlMainPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlMainPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\CtrlMainPage2.Designer.vb">
+      <DependentUpon>CtrlMainPage2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlMainPage2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EnumDemp.vb" />
+    <Compile Include="MainForm2.Designer.vb">
+      <DependentUpon>MainForm2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Control\CtrlNewsPage.Designer.vb">
+      <DependentUpon>CtrlNewsPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlNewsPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\CtrlShopPage.Designer.vb">
+      <DependentUpon>CtrlShopPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlShopPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\CtrlTransPanel.Designer.vb">
+      <DependentUpon>CtrlTransPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlTransPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\CtrlTransPicture.Designer.vb">
+      <DependentUpon>CtrlTransPicture.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Control\CtrlTransPicture.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Control\PanelPage.Designer.vb">
+      <DependentUpon>PanelPage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Control\PanelPage.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\FormTest.Designer.vb">
+      <DependentUpon>FormTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormTest.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FormRoundWindow.Designer.vb">
+      <DependentUpon>FormRoundWindow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FormRoundWindow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\myFormSlide.Designer.vb">
+      <DependentUpon>myFormSlide.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\myFormSlide.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\splash\frmMain.Designer.vb">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\splash\frmMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\splash\frmSplash.Designer.vb">
+      <DependentUpon>frmSplash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\splash\frmSplash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\splash\myTransSplashWinow.Designer.vb">
+      <DependentUpon>myTransSplashWinow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\splash\myTransSplashWinow.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\splash\myTransSplashWinow2.Designer.vb">
+      <DependentUpon>myTransSplashWinow2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\splash\myTransSplashWinow2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\splash\splash.vb" />
+    <Compile Include="Form\MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MainForm.Designer.vb">
+      <DependentUpon>MainForm.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Methods\DrawingArea.Designer.vb">
+      <DependentUpon>DrawingArea.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Methods\DrawingArea.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ModulePublic.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ProcessHandler\ProcessHandler.vb" />
+    <Compile Include="Form\TextOnGlass.vb" />
+    <Compile Include="Program.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Alert\Form_Alert.resx">
+      <DependentUpon>Form_Alert.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Alert\FormAlertTest.resx">
+      <DependentUpon>FormAlertTest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigHelper\FormConfigExample.resx">
+      <DependentUpon>FormConfigExample.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsCombo\myControlContacts.resx">
+      <DependentUpon>myControlContacts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsCombo\myControlNewsFeeds.resx">
+      <DependentUpon>myControlNewsFeeds.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsCombo\myFileSelection.resx">
+      <DependentUpon>myFileSelection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsCombo\myFolderSelection.resx">
+      <DependentUpon>myFolderSelection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsCombo\myHBLogo.resx">
+      <DependentUpon>myHBLogo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsCombo\myTextBox.resx">
+      <DependentUpon>myTextBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myButtonFontChange.resx">
+      <DependentUpon>myButtonFontChange.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myButtonTrans.resx">
+      <DependentUpon>myButtonTrans.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myButtonHover.resx">
+      <DependentUpon>myButtonHover.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myButton.resx">
+      <DependentUpon>myButton.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myButtonCircluar.resx">
+      <DependentUpon>myButtonCircluar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myButtonEllipse.resx">
+      <DependentUpon>myButtonEllipse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myButtonEllipseWithBorder.resx">
+      <DependentUpon>myButtonEllipseWithBorder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myButtonToggle.resx">
+      <DependentUpon>myButtonToggle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myDrag.resx">
+      <DependentUpon>myDrag.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myImageBtn.resx">
+      <DependentUpon>myImageBtn.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myRadio.resx">
+      <DependentUpon>myRadio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myTextBoxBorder.resx">
+      <DependentUpon>myTextBoxBorder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\myTextBoxRegex.resx">
+      <DependentUpon>myTextBoxRegex.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\CtrlBanner.resx">
+      <DependentUpon>CtrlBanner.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\CtrlFriendPage.resx">
+      <DependentUpon>CtrlFriendPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\CtrlMainPage.resx">
+      <DependentUpon>CtrlMainPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\CtrlMainPage2.resx">
+      <DependentUpon>CtrlMainPage2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm2.resx">
+      <DependentUpon>MainForm2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\CtrlNewsPage.resx">
+      <DependentUpon>CtrlNewsPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\CtrlShopPage.resx">
+      <DependentUpon>CtrlShopPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\PanelPage.resx">
+      <DependentUpon>PanelPage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormTest.resx">
+      <DependentUpon>FormTest.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FormRoundWindow.resx">
+      <DependentUpon>FormRoundWindow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\myFormSlide.resx">
+      <DependentUpon>myFormSlide.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\splash\frmMain.resx">
+      <DependentUpon>frmMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\splash\frmSplash.resx">
+      <DependentUpon>frmSplash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\splash\myTransSplashWinow.resx">
+      <DependentUpon>myTransSplashWinow.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\splash\myTransSplashWinow2.resx">
+      <DependentUpon>myTransSplashWinow2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MainForm.resx">
+      <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mysql5\COPYING">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\my-huge.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\my-innodb-heavy-4G.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\my-large.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\my-medium.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\my-small.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\README">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\charsets\README">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\czech\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\danish\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\dutch\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\english\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\estonian\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\french\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\german\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\greek\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\hungarian\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\italian\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\japanese\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\korean\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\norwegian-ny\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\norwegian\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\polish\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\portuguese\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\romanian\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\russian\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\serbian\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\slovak\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\spanish\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\swedish\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="mysql5\share\ukrainian\errmsg.sys">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="website\apache\bin\dbmmanage.pl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\bin\php.portable.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\cgi-bin\printenv.pl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\conf\charset.conv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\conf\httpd.portable.conf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\conf\magic">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\conf\mime.types">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\conf\openssl.cnf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\logs\httpd.pid">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_access_compat.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_actions.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_alias.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_allowmethods.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_asis.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authnz_fcgi.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authnz_ldap.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authn_anon.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authn_core.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authn_dbd.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authn_dbm.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authn_file.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authn_socache.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authz_core.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authz_dbd.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authz_dbm.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authz_groupfile.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authz_host.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authz_owner.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_authz_user.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_auth_basic.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_auth_digest.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_auth_form.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_autoindex.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_buffer.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_cache.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_cache_disk.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_cache_socache.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_cern_meta.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_cgi.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_charset_lite.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_data.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_dav.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_dav_fs.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_dav_lock.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_dbd.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_deflate.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_dir.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_dumpio.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_env.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_expires.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_ext_filter.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_file_cache.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_filter.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_headers.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_heartbeat.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_heartmonitor.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_http2.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_ident.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_imagemap.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_include.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_info.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_isapi.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_lbmethod_bybusyness.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_lbmethod_byrequests.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_lbmethod_bytraffic.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_lbmethod_heartbeat.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_ldap.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_logio.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_log_config.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_log_debug.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_log_forensic.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_lua.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_macro.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_mime.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_mime_magic.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_negotiation.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_ajp.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_balancer.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_connect.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_express.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_fcgi.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_ftp.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_html.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_http.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_http2.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_scgi.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_proxy_wstunnel.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_ratelimit.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_reflector.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_remoteip.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_reqtimeout.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_request.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_rewrite.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_sed.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_session.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_session_cookie.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_session_crypto.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_session_dbd.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_setenvif.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_slotmem_plain.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_slotmem_shm.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_socache_dbm.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_socache_memcache.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_socache_shmcb.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_speling.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_ssl.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_status.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_substitute.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_unique_id.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_userdir.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_usertrack.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_version.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_vhost_alias.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_watchdog.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\apache\modules\mod_xml2enc.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\cgi-bin\printenv.pl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php5\dev\php5ts.lib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php5\extras\openssl.cnf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php5\phar.phar.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php5\pharcommand.phar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php5\php.ini-development">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php5\php.ini-production">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php5\php.portable.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php5\php5embed.lib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php5\pws-php5cgi.reg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php5\pws-php5isapi.reg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php7\phar.phar.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php7\pharcommand.phar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="website\php7\php.portable.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="WEMULauncher.conf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\a.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background_blizzcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\social_background_default.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_blizzButton_hovered_release.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_down_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back_vignette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background_default.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\border_topGradient.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\collapse_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contextMenu_channel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contextMenu_gamesetting_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contextMenu_group_chat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\expand_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\friendButton_hovered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hintbox_green_arrow_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hintbox_green_arrow_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hintbox_green_arrow_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hintbox_green_arrow_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hintbox_green_border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_bnet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_channels_tab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_next_patch_queued_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_next_patch_queued_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_next_patch_queued_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_offline_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_offline_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_offline_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_offline_reconnecting_32.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_offline_reconnecting_48.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_openFolder_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_suggested_friends_for_banner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cn_legal_s2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cn_legal_wow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile_bg_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile_icon_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\40_battlebros.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\48_app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\275_app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkbox_checked_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkbox_checked_hover%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checkbox_checked_pressed%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slider_handle_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slider_handle_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slider_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slider_pointer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slider_pointer_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slider_pointer_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slider_pointer_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toast_base.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toast_base_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toast_bottomGradient.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toast_bottomGradient_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toast_topGradient.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toast_topGradient_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vslider_pointer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vslider_pointer_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vslider_pointer_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vslider_pointer_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\border_topbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\border_topbar_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_disabled%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_hover%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_hover_21x19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_normal%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_normal_21x19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_pressed%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_close_pressed_21x19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_cog_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_cog_disabled%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_cog_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_cog_hover%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_cog_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_cog_normal%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_cog_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_cog_pressed%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_maximize_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_maximize_disabled%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_maximize_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_maximize_hover%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_maximize_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_maximize_normal%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_maximize_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_maximize_pressed%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_minimize_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_minimize_disabled%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_minimize_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_minimize_hover%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_minimize_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_minimize_normal%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_minimize_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_minimize_pressed%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_restore_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_restore_disabled%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_restore_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_restore_hover%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_restore_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_restore_normal%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_restore_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_win_restore_pressed%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu-friends-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background_default1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shop_background_default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\news_background_default.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\top1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\myCtrl.bmp" />
+    <Content Include="mysql5\bin\mysqldump.exe" />
+    <None Include="Resources\wow.jpg" />
+    <None Include="Resources\oregoncore.png" />
+    <None Include="Resources\oregoncore-small.png" />
+    <Content Include="website\apache\ABOUT_APACHE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\ab.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\abs.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\ApacheMonitor.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\apr_crypto_openssl-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\apr_dbd_odbc-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\apr_ldap-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\htcacheclean.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\htdbm.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\htdigest.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\htpasswd.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\httpd.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\httxt2dbm.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\libapr-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\libapriconv-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\libaprutil-1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\libeay32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\libhttpd.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\libpq.dll" />
+    <Content Include="website\apache\bin\libxml2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\logresolve.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\lua52.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\mh.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\msvcr100.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\nghttp2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\openssl.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\pcre.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\pv.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\rotatelogs.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\ssleay32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\wintty.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\bin\zlib1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\CHANGES.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\INSTALL.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\LICENSE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\NOTICE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\OPENSSL-NEWS.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\OPENSSL-README.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\apache\README.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\banner.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\content.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\contentbot.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\header.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\menu.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\menuhover.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\menuleft.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\menulefthover.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\menuright.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\menurighthover.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\images\topcontent.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\index.php">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\htdocs\phpinfo\style.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\deplister.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_bz2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_com_dotnet.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_curl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_enchant.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_exif.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_fileinfo.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_gd2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_gettext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_gmp.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_imap.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_interbase.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_intl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_ldap.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_mbstring.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_mysql.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_mysqli.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_oci8.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_oci8_11g.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_openssl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_pdo_firebird.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_pdo_mysql.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_pdo_oci.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_pdo_odbc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_pdo_pgsql.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_pdo_sqlite.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_pgsql.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_shmop.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_snmp.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_soap.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_sockets.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_sqlite3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_sybase_ct.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_tidy.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_xmlrpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ext\php_xsl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\glib-2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\gmodule-2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\icudt49.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\icuin49.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\icuio49.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\icule49.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\iculx49.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\icutest49.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\icutu49.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\icuuc49.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\install.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\libeay32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\libenchant.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\libenchant_ispell.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\libenchant_myspell.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\libpq.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\libsasl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\libssh2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\news.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\php-cgi.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\php-win.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\php.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\php.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\php5apache2_2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\php5apache2_2_filter.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\php5apache2_4.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\php5nsapi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\php5ts.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\readme-redist-bins.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\snapshot.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php5\ssleay32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_bz2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_com_dotnet.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_curl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_enchant.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_exif.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_fileinfo.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_ftp.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_gd2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_gettext.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_gmp.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_imap.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_interbase.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_intl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_ldap.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_mbstring.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_mysqli.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_oci8_12c.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_odbc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_opcache.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_openssl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_pdo_firebird.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_pdo_mysql.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_pdo_oci.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_pdo_odbc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_pdo_pgsql.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_pdo_sqlite.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_pgsql.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_phpdbg_webhelper.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_shmop.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_snmp.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_soap.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_sockets.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_sqlite3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_sysvshm.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_tidy.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_xmlrpc.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ext\php_xsl.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\install.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\libeay32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\libpq.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\license.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\news.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\nghttp2.dll" />
+    <Content Include="website\php7\php.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\php.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\php5apache2_4.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\php5nsapi.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\php5ts.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\php7apache2_4.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\php7ts.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\readme-redist-bins.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\snapshot.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\php7\ssleay32.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="website\WHAT IS THIS.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\btn_primary_hover.png" />
+    <None Include="Resources\background_wow2.jpg" />
+    <None Include="Resources\background_wow_wod.jpg" />
+    <None Include="Resources\background_wow_mop.jpg" />
+    <None Include="Resources\background_wow_cata.jpg" />
+    <None Include="Resources\background_wow_bc.jpg" />
+    <None Include="Resources\background_wow.jpg" />
+    <None Include="Resources\img_blizzButton_hovered_release1.png" />
+    <None Include="Resources\img_blizzButton_normal_release.png" />
+    <None Include="Resources\wotlk.ico" />
+    <None Include="Resources\cata.ico" />
+    <None Include="Resources\arrow_down.png" />
+    <None Include="Resources\aaBFA.jpg" />
+    <None Include="Resources\aaBWL.jpg" />
+    <None Include="Resources\aaWARSONG.jpg" />
+    <None Include="Resources\btn_secondary_disabled.png" />
+    <None Include="Resources\arrow_down_blue1.png" />
+    <None Include="Resources\bell-icon.png" />
+    <None Include="Resources\avatar_friendsonline.png" />
+    <Content Include="mysql5\bin\mysqladmin.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\bin\mysqld.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\armscii8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\ascii.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\cp1250.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\cp1251.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\cp1256.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\cp1257.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\cp850.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\cp852.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\cp866.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\dec8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\geostd8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\greek.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\hebrew.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\hp8.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\Index.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\keybcs2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\koi8r.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\koi8u.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\latin1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\latin2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\latin5.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\latin7.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\macce.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\macroman.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\charsets\swe7.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\errmsg-utf8.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\fill_help_tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\mysql_system_tables.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\mysql_system_tables_data.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="mysql5\share\mysql_test_data_timezone.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Circled Play_48px.png" />
+    <Content Include="Resources\Circled Play_50px.png" />
+    <None Include="Resources\contextMenu_redeemcode_on.png" />
+    <None Include="Resources\cn_legal_wow1.png" />
+    <None Include="Resources\friendButton_hovered1.png" />
+    <None Include="Resources\friendButton_normal.png" />
+    <Content Include="Resources\icon.ico" />
+    <None Include="Resources\icon_combo_selector.png" />
+    <None Include="Resources\icon_combo_selector1.png" />
+    <None Include="Resources\icon_combo_selector2.png" />
+    <None Include="Resources\logo_wow_ptr_zhCN.png" />
+    <None Include="Resources\icon_menuSettings_on.png" />
+    <None Include="Resources\icon_game_d3.png" />
+    <None Include="Resources\icon_game_d3_medium.png" />
+    <None Include="Resources\icon_game_d3_small.png" />
+    <None Include="Resources\icon_game_heroes_medium.png" />
+    <None Include="Resources\icon_game_heroes_small.png" />
+    <None Include="Resources\icon_game_hs_medium.png" />
+    <None Include="Resources\icon_game_hs_small.png" />
+    <None Include="Resources\icon_game_overwatch_medium.png" />
+    <None Include="Resources\icon_game_overwatch_small.png" />
+    <None Include="Resources\icon_game_sc2_medium.png" />
+    <None Include="Resources\icon_game_sc2_small.png" />
+    <None Include="Resources\icon_game_war3_medium.png" />
+    <None Include="Resources\icon_game_war3_small.png" />
+    <None Include="Resources\icon_game_wow_medium.png" />
+    <None Include="Resources\icon_game_wow_small.png" />
+    <None Include="Resources\icon_breaking_news_header.png" />
+    <None Include="Resources\menu-friends-normal1.png" />
+    <None Include="Resources\kissclipart-swirly-portal-clipart-portal-clip-art-a59c375b7db6b2eb.png" />
+    <None Include="Resources\icon_warning_normal.png" />
+    <None Include="Resources\icon_warning_hover.png" />
+    <Content Include="Resources\Pause Button_48px.png" />
+    <Content Include="Resources\Pause Button_50px.png" />
+    <None Include="Resources\presence-icon-online.png" />
+    <None Include="Resources\presence-icon-online-10x10.png" />
+    <None Include="Resources\stream_disabled.png" />
+    <None Include="Resources\stream_ready.png" />
+    <None Include="Resources\presence-icon-appearoffline-10x10.png" />
+    <Content Include="Resources\Toggle Off_48px.png" />
+    <Content Include="Resources\Toggle Off_48px1.png" />
+    <Content Include="Resources\Toggle Off_48px2.png" />
+    <Content Include="Resources\Toggle On_48px.png" />
+    <Content Include="Resources\Toggle On_48px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="mysql5\data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
